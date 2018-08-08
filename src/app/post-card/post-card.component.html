@@ -1,0 +1,5 @@
+<div class="card">
+  <img [src]="post.url">
+  <p>{{post.title}}</p>
+  <app-post-stats [views]="post.views" [comments]="post.comments.length" [score]="post.score" class="stats"></app-post-stats>
+</div>

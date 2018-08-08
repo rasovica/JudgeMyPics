@@ -1,0 +1,24 @@
+<div class="form-container">
+  <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)">
+    <h1>Register form</h1>
+    <label>Username:
+      <input type="text" formControlName="username">
+    </label>
+    <div class="alert" *ngIf="registerForm.get('username').hasError('required') && registerForm.get('username').touched">Username is required.</div>
+    <div class="alert" *ngIf="customError">{{customError}}</div>
+
+    <label>Password
+      <input type="password" formControlName="password">
+    </label>
+    <div class="alert" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">Password is required.</div>
+
+    <label>Email
+      <input type="email" formControlName="email">
+    </label>
+    <div class="alert" *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched">Email is required.</div>
+    <div class="alert" *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').touched">Email is invalid.</div>
+    <br>
+    Already a user? <a [routerLink]="['/login']">Login</a>
+    <input class="button expanded" type="submit" [disabled]="!registerForm.valid" value="Register">
+  </form>
+</div>
